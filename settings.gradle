@@ -1,0 +1,1 @@
+include ':app', ':libqq',':libloginbase', ':libmain',':libsina',':libfacebook',':libwechat'

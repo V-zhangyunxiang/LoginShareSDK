@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LoginShareSDK.iml" filepath="$PROJECT_DIR$/LoginShareSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libfacebook/libfacebook.iml" filepath="$PROJECT_DIR$/libfacebook/libfacebook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libloginbase/libloginbase.iml" filepath="$PROJECT_DIR$/libloginbase/libloginbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libmain/libmain.iml" filepath="$PROJECT_DIR$/libmain/libmain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libqq/libqq.iml" filepath="$PROJECT_DIR$/libqq/libqq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libsina/libsina.iml" filepath="$PROJECT_DIR$/libsina/libsina.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libwechat/libwechat.iml" filepath="$PROJECT_DIR$/libwechat/libwechat.iml" />
+    </modules>
+  </component>
+</project>

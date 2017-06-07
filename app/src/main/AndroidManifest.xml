@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.cmplay.loginsharesdk">
+    <!--所有平台用到的权限-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />  <!-- 检测网络状态 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 缓存资源优先存入SDcard -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 读取内存卡存储数据 -->
+    <uses-permission android:name="android.permission.INTERNET" />              <!-- 允许应用程序联网，以便向我们的服务器端发送数据。 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />     <!-- 获取使用Wi-Fi等WLAN无线网络 -->
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+       >
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <!--Sina need to add the Action and category-->
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--Sina need to add the Action and category-->
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.cmplay.libmain.CMPShareUtils"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            />
+        <activity android:name="com.cmplay.libmain.CMPLoginUtils"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            />
+        <meta-data
+            android:name="WX_APPKEY"
+            android:value="wx14e00e1a1c0c151e"/>
+        <meta-data
+            android:name="WX_SECRET"
+            android:value="71d5ddcae2e5dfd879fb369128b2e771"/>
+        <meta-data
+            android:name="QQ_APPKEY"
+            android:value="cmt222222"/>
+        <meta-data
+            android:name="SINA_APPKEY"
+            android:value="cmt2045436852"/>
+        <meta-data
+            android:name="SINA_URL"
+            android:value="http://www.sina.com"/>
+        <!-- facebook相关 -->
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:exported="true"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"
+            />
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1340516772666520"
+                  android:name="com.facebook.FacebookContentProvider"
+                  android:exported="true" />
+        <!-- facebook相关 -->
+
+        <!-- QQ相关 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- scheme需要用你在开放平台申请的appid替换 -->
+                <data android:scheme="tencent222222" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- QQ相关 -->
+
+        <!--Sina相关-->
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <!--Sina相关-->
+
+        <!--Wechat相关-->
+        <activity android:name="com.cmplay.tiles2_cn.wxapi.WXEntryActivity"  android:exported="true">
+        </activity>
+        <!--Wechat相关-->
+    </application>
+
+</manifest>

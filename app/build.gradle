@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        //applicationId "com.tencent.sample"   //com.tencent.sample com.cmplay.tiles2_cn com.sina.weibo.sdk.demo com.cmcm.arrowio
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+//        project.archivesBaseName = "cmplay-base"
+//        project.version = android.defaultConfig.versionName
+    }
+//    libraryVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.aar')) {
+//                def fileName = "${archivesBaseName}-${version}.aar"
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
+//    }
+    signingConfigs {
+        //测试微信
+        debug {
+            keyAlias 'tile2'
+            keyPassword 'tile2,.com'
+            storeFile file('tile2.jks')
+            storePassword 'tile2,.com'
+        }
+        //测试QQ
+//        debug {
+//            storeFile file("qqdebug.keystore")
+//        }
+        //测试微博
+//        debug {
+//            storeFile file("sinadebug.keystore")
+//        }
+        //facebook测试
+//        debug {
+//            keyAlias 'arrow'
+//            keyPassword '00000000'
+//            storeFile file('arrow.keystore')
+//            storePassword '00000000'
+//        }
+    }
+    productFlavors{
+             cn{
+                 //测试功能时要切换包名
+                 applicationId "com.cmplay.tiles2_cn"
+                 //manifestPlaceholders=[wx_appkey:"wx14e00e1a1c0c151e",wx_secret:"71d5ddcae2e5dfd879fb369128b2e771",qq_appkey:"cmt222222",sina_appkey:"cmt2045436852",sina_url:"http://www.sina.com"]
+               }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            jniDebuggable true
+        }
+
+    }
+    //引入微博的所有so库
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+//facebook专用
+repositories {
+    mavenCentral()
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+     compile project(':libmain')
+
+//     compile project(':libqq')
+//     compile project(':libloginbase')
+//     compile project(':libsina')
+
+     //compile project(':libfacebook')
+     //compile project(':libwechat')
+     //compile project(':facebooksdk')
+
+    compile(name:'facebook-sdk', ext:'aar')
+    compile 'com.android.support:cardview-v7:24.0.0'
+
+
+}
